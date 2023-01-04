@@ -2,7 +2,9 @@
   <span>Crypto Currencies</span>
   <span class="navbar"></span>
   <mat-form-field>
-      <mat-select (valueChange)="selectedCurrency($event)" [(ngModel)]="currentCurrency">
+      <mat-select
+      (valueChange)="selectedCurrency($event)"
+      [(ngModel)]="currentCurrency">
           <mat-option selected value="HUF">HUF</mat-option>
           <mat-option value="USD">USD</mat-option>
       </mat-select>

@@ -12,6 +12,6 @@ export class AppComponent {
 
   }
   selectedCurrency(event:string){
-    
+    console.log(event)
   }
 }

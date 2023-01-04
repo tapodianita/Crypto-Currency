@@ -9,10 +9,17 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-
+import { CurrencyTableComponent } from './currency-table/currency-table.component';
+import { CurrencyGraphComponent } from './currency-graph/currency-graph.component';
+import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CurrencyTableComponent,
+    CurrencyGraphComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +29,11 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule,
+    MatTableModule,
+    HttpClientModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
