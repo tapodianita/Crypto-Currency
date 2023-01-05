@@ -1,0 +1,49 @@
+<div class="container">
+    <mat-form-field>
+        <mat-label>Search</mat-label>
+        <input 
+        matInput
+        (keyup)="searchCoins($event)"
+        placeholder="Coin Name"
+        #input>
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Coin </th>
+                <td mat-cell *matCellDef="let row">
+                    <img id="icon" [src]="row.image" width="50" alt="{{row.symbol}}">
+                    <span id="icon" class="mx-2">{{row.symbol | uppercase}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="current_price">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+                <td mat-cell *matCellDef="let row"> {{row.current_price | currency:currency}} </td>
+            </ng-container>
+            <ng-container matColumnDef="price_change_percentage_24h">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> 24h Change </th>
+                <td mat-cell *matCellDef="let row"> {{row.price_change_percentage_24h}}% </td>
+            </ng-container>
+            <ng-container matColumnDef="market_cap">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Market Cap </th>
+                <td mat-cell *matCellDef="let row"> {{row.market_cap | currency : currency}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr 
+            (click)="gotoDetails(row)"
+             mat-row *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+
+        <mat-paginator
+        [pageSizeOptions]="[10, 25, 50, 100]" 
+        [showFirstLastButtons]="showFirstLastButtons">
+    </mat-paginator>
+    </div>
+</div>
