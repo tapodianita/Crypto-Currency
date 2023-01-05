@@ -17,3 +17,6 @@ mat-form-field {
 :host ::ng-deep tr.mat-row {
     height: 70px;
 }
+#icon:hover{
+    cursor: pointer;
+}

@@ -4,14 +4,14 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CurrencyService } from '../services/currency.service';
-
+import { SelectedCurrencyService } from '../services/selected-currency.service';
 @Component({
   selector: 'app-currency-table',
   templateUrl: './currency-table.component.html',
   styleUrls: ['./currency-table.component.scss']
 })
 export class CurrencyTableComponent {
-  constructor(private api : CurrencyService, private router : Router){}
+  constructor(private api : CurrencyService, private router : Router, private selected: SelectedCurrencyService){}
 
   currency : string = "HUF"
   dataSource!: MatTableDataSource<any>;
@@ -23,6 +23,11 @@ export class CurrencyTableComponent {
 
   ngOnInit(): void{
   this.getAllData();
+  this.selected.getCurrency()
+  .subscribe(res=>{
+    this.currency = res;
+    this.getAllData();
+  })
   }
 
   getAllData() {
