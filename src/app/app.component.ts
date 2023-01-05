@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SelectedCurrencyService } from './services/selected-currency.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   currentCurrency : string ="HUF"
 
-  constructor(){
+  constructor(private selected: SelectedCurrencyService){
 
   }
   selectedCurrency(event:string){
-    console.log(event)
+    this.selected.setCurrency(event);
   }
 }
