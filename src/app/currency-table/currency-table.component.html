@@ -23,7 +23,15 @@
             </ng-container>
             <ng-container matColumnDef="price_change_percentage_24h">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> 24h Change </th>
-                <td mat-cell *matCellDef="let row"> {{row.price_change_percentage_24h}}% </td>
+                <td 
+                mat-cell 
+                *matCellDef="let row"
+                [ngClass]="{
+                    positive: !isNegative(row.price_change_percentage_24h),
+                    negative: isNegative(row.price_change_percentage_24h)
+                }">
+                {{row.price_change_percentage_24h}}% 
+            </td>
             </ng-container>
             <ng-container matColumnDef="market_cap">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Market Cap </th>
