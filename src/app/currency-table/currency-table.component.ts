@@ -49,4 +49,13 @@ export class CurrencyTableComponent {
   gotoDetails(row: any) {
     this.router.navigate(['currency-graph',row.id])
   }
+
+  isNegative(val: number):boolean{
+    if(val <=0){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }
